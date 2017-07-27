@@ -25,14 +25,9 @@ export default class App extends React.Component {
     if (pos === -1) this.setState(prevState => { prevState.books.push(book) });
     else this.setState(prevState => { prevState.books[pos].shelf = book.shelf });
   }
-  async grabBooks() {
-    let books = await BooksAPI.getAll();
-    console.log('books is: ', books);
-  }
   render() {
     return (
       <div className="app">
-        <button onClick={this.grabBooks.bind(this)}>getbooks</button>
         <Route exact path='/' render={ ({ history }) => (
           <BookShelf 
           history={history}

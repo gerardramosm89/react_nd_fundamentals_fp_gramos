@@ -20,10 +20,21 @@ export default class App extends React.Component {
     this.setState({ books });
   }
 
-  addBook(book) {
-    let pos = this.state.books.map(e => e.id).indexOf(book.id);
-    if (pos === -1) this.setState(prevState => { prevState.books.push(book) });
-    else this.setState(prevState => { prevState.books[pos].shelf = book.shelf });
+  async addBook(book) {
+    try {
+      // Before we add book, let's update the database
+      await BooksAPI.update(book, book.shelf);
+      // Then let's check if the book is already in our state array of 'books'
+      let pos = this.state.books.map(e => e.id).indexOf(book.id);
+      // if it isn't currently in our array of books, let's add it!
+      if (pos === -1) this.setState(prevState => { prevState.books.push(book) });
+      // If it is already in there let's just update it's shelf.
+      else this.setState(prevState => { prevState.books[pos].shelf = book.shelf });
+    } catch (err) {
+      // If we get a bad response let's console log it.
+      console.log('Couldn\'t completely add book. Got error of: ', err);
+    }
+
   }
   render() {
     return (

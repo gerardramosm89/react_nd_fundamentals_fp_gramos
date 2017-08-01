@@ -1,6 +1,19 @@
 
-# Gerard Ramos demo:
-### Below shows the app functionality, moving books between shelves, and also adding new books to the shelf
+# Gerard Ramos demo
+## To install the project:
+1) Simply download or clone this repository
+2) Run 
+```
+npm install
+```
+3) Once the dependencies have finished installing, run 
+```
+npm start
+```
+and the app should display the demo below
+
+##### Below shows the app functionality, moving books between shelves, and also adding new books to the shelf
+
 ![alt text](https://github.com/gerardramosm89/react_nd_fundamentals_fp_gramos/blob/master/demornd.gif)
 
 
